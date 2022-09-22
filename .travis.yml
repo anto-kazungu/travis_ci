@@ -20,5 +20,5 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - echo push YOUR_DOCKER_HUB/travis_ci
+  - echo push antokazungu/travis_ci
 

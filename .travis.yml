@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - 13
+
+service:
+  - docker
+
+#Pre-testing installs
+install:
+  -echo "nothing needs to be installed"
+
+#Scripts to be run as tests
+before script:
+  - echo "no tests"
+
+script:
+  - docker --version #print the version for logging
+  - docker build -t simple node .
+  - docker tag travis_ci antokazungu/travis_ci:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo push YOUR_DOCKER_HUB/travis_ci
+
